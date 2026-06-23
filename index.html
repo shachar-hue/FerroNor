@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FerroNor — Wood Industry in Angola</title>
+<meta name="description" content="FerroNor is Angola's premium hardwood export group. Sustainable forestry, precision processing, and global export from Luanda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #090909;
+  --bg2: #111111;
+  --text: #E9E2D6;
+  --muted: #beb3a7;
+  --bronze: #754938;
+  --bronze-dk: #5c3929;
+  --forest: #4b5738;
+  --forest-lt: #545e5b;
+  --div: rgba(255,255,255,0.08);
+  --head: 'Arial MT Pro', 'Arial MT', Arial, Helvetica, sans-serif;
+  --sans: 'Inter', 'Helvetica Neue', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body { font-family: var(--sans); color: var(--text); background: var(--bg); overflow-x: hidden; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; }
+
+/* ── TYPOGRAPHY ─────────────────────────────── */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+.display {
+  font-family: var(--head);
+  font-size: clamp(3rem, 7.5vw, 7.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+.headline {
+  font-family: var(--head);
+  font-size: clamp(1.8rem, 4vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.subhead {
+  font-family: var(--sans);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+.body-copy {
+  font-family: var(--sans);
+  font-size: clamp(0.875rem, 1.4vw, 0.975rem);
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 60ch;
+  letter-spacing: 0.01em;
+}
+
+/* ── LAYOUT ──────────────────────────────────── */
+.wrap { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 6vw; }
+.section-rule { height: 1px; background: var(--div); margin: 0 6vw; }
+
+/* ── KEYFRAMES ───────────────────────────────── */
+@keyframes kenBurns {
+  0%   { transform: scale(1.00) translate(0%,   0%  ); }
+  50%  { transform: scale(1.07) translate(-0.8%, -0.4%); }
+  100% { transform: scale(1.12) translate(0.8%,  0.4%); }
+}
+@keyframes fogDrift {
+  0%,100% { opacity: 0.25; transform: translateX(-1.5%) scale(1.01); }
+  50%      { opacity: 0.45; transform: translateX(1.5%)  scale(1.00); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(36px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes wordIn {
+  from { opacity: 0; transform: translateY(105%); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+@keyframes scrollPulse {
+  0%,100% { transform: translateY(0);  opacity: 1; }
+  60%      { transform: translateY(10px); opacity: 0; }
+}
+@keyframes markerPulse {
+  0%,100% { r: 6;  opacity: 0.9; }
+  50%      { r: 10; opacity: 0.5; }
+}
+
+/* ── REVEAL SYSTEM ───────────────────────────── */
+.r {
+  opacity: 0;
+  transform: translateY(44px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.r.in  { opacity: 1; transform: translateY(0); }
+.r.d1  { transition-delay: 0.15s; }
+.r.d2  { transition-delay: 0.30s; }
+.r.d3  { transition-delay: 0.45s; }
+.r.d4  { transition-delay: 0.60s; }
+
+/* ── REDUCED MOTION ──────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { animation-duration:0.01ms!important; animation-iteration-count:1!important; transition-duration:0.01ms!important; }
+  .r { opacity:1; transform:none; }
+}
+
+/* ═══════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════ */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 30px 6vw;
+  transition: background 0.5s ease, padding 0.4s ease;
+  background: linear-gradient(to bottom, rgba(5,5,5,0.82) 0%, rgba(5,5,5,0.38) 60%, transparent 100%);
+}
+#nav.scrolled {
+  background: rgba(9,9,9,0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 18px 6vw;
+}
+.nav-logo { font-family: var(--head); font-size: 1.4rem; font-weight: 500; letter-spacing: 0.01em; display: flex; align-items: center; }
+.nav-logo-img { height: 36px; width: auto; display: block; filter: brightness(0) invert(1); }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 12px; font-weight: 300; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--text); transition: color 0.3s;
+}
+.nav-links a:hover {
+  color: #F5EDD8;
+  text-shadow: 0 0 12px rgba(184,154,99,0.7), 0 0 28px rgba(184,154,99,0.35);
+}
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.lang-btn {
+  background: none; border: none; font-family: var(--sans);
+  font-size: 12px; font-weight: 300; letter-spacing: 0.13em; text-transform: uppercase;
+  color: #ffffff; transition: background 0.25s ease, color 0.25s ease;
+  padding: 5px 9px; min-height: 44px; border-radius: 4px; cursor: pointer;
+}
+.lang-btn.on {
+  background: rgba(255,255,255,0.18);
+  color: #ffffff;
+}
+.lang-btn:hover {
+  background: rgba(255,255,255,0.22);
+  color: #111111;
+}
+.lang-sep { color: rgba(255,255,255,0.25); font-size: 12px; }
+.nav-ham {
+  display: none; flex-direction: column; gap: 5px; background: none; border: none;
+  padding: 8px; min-width: 44px; min-height: 44px; justify-content: center; align-items: center;
+}
+.nav-ham span { display: block; width: 22px; height: 1px; background: var(--text); transition: all 0.35s; }
+
+/* Mobile overlay */
+#mob-menu {
+  position: fixed; inset: 0; z-index: 800; background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.4s;
+}
+#mob-menu.open { opacity: 1; pointer-events: all; }
+#mob-menu nav { display: flex; flex-direction: column; align-items: center; gap: 2.25rem; }
+#mob-menu a { font-family: var(--head); font-size: 2.4rem; font-weight: 400; letter-spacing: 0.01em; transition: color 0.3s; }
+#mob-menu a:hover { color: var(--bronze); }
+.mob-lang { display: flex; gap: 1rem; margin-top: 2rem; }
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+#hero {
+  position: relative; height: 100svh; min-height: 680px;
+  overflow: hidden; display: flex; align-items: flex-end; padding-bottom: 9vh;
+}
+.hero-bg { position: absolute; inset: 0; overflow: hidden; }
+.hero-bg video {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(9,9,9,0.18) 0%, rgba(9,9,9,0.12) 35%, rgba(9,9,9,0.62) 72%, rgba(9,9,9,0.96) 100%);
+}
+.hero-fog {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 120% 60% at 30% 70%, rgba(75,87,56,0.18) 0%, transparent 70%);
+  animation: fogDrift 14s ease-in-out infinite;
+}
+.hero-content { position: relative; z-index: 2; width: 100%; }
+.hero-eyebrow {
+  font-family: var(--sans); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(184,154,99,0.65), 0 0 32px rgba(184,154,99,0.3);
+  margin-bottom: 1.75rem;
+  opacity: 0; animation: fadeUp 1s var(--ease) 0.4s forwards;
+}
+.hero-title { font-family: var(--head); line-height: 0.92; letter-spacing: -0.04em; margin-bottom: 2.5rem; }
+.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line span {
+  display: block;
+  font-size: clamp(3.5rem, 9vw, 9rem); font-weight: 700;
+  opacity: 0; animation: wordIn 0.9s var(--ease) forwards;
+}
+.hero-title .line:nth-child(1) span { animation-delay: 0.75s; }
+.hero-title .line:nth-child(2) span { animation-delay: 0.95s; }
+.hero-title .line:nth-child(3) span { animation-delay: 1.15s; }
+.hero-sub {
+  font-family: var(--sans); font-weight: 300;
+  font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--muted); line-height: 1.8;
+  letter-spacing: 0.04em; text-transform: none;
+  margin-bottom: 3rem;
+  opacity: 0; animation: fadeUp 1s var(--ease) 1.45s forwards;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 1rem;
+  font-size: 11px; font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(255,255,255,0.14);
+  border-radius: 4px;
+  padding: 10px 20px;
+  transition: background 0.25s ease, color 0.25s ease, text-shadow 0.25s ease, gap 0.3s ease;
+  min-height: 44px;
+  opacity: 0; animation: fadeUp 1s var(--ease) 1.75s forwards;
+}
+.hero-cta:hover {
+  background: rgba(255,255,255,0.2);
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(184,154,99,0.8), 0 0 28px rgba(184,154,99,0.4);
+  gap: 1.5rem;
+}
+.hero-cta::after { content: '→'; font-size: 14px; }
+.scroll-ind {
+  position: absolute; bottom: 2.5rem; right: 6vw; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+  opacity: 0; animation: fadeUp 1s var(--ease) 2.3s forwards;
+}
+.scroll-ind span {
+  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
+  writing-mode: vertical-lr;
+}
+.scroll-line {
+  width: 1px; height: 56px;
+  background: linear-gradient(to bottom, var(--bronze), transparent);
+  animation: scrollPulse 1.8s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════
+   OVERVIEW
+═══════════════════════════════════════════════ */
+#overview { padding: 14vh 0; background: var(--bg); }
+.ov-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.ov-left { padding-right: 7vw; border-right: 1px solid var(--div); }
+.ov-right { padding-left: 7vw; }
+.ov-body { display: flex; flex-direction: column; gap: 1.6rem; margin-top: 3rem; }
+.ov-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 5rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--div);
+}
+.stat-num {
+  font-family: var(--head);
+  font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 18px rgba(184,154,99,0.45), 0 0 40px rgba(184,154,99,0.18);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.stat-lbl {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); margin-top: 0.6rem;
+}
+
+/* ═══════════════════════════════════════════════
+   ORIGIN & REACH
+═══════════════════════════════════════════════ */
+#origin { padding: 14vh 0; background: var(--bg2); }
+.map-wrap {
+  position: relative; width: 100%; height: 58vh; min-height: 360px;
+  overflow: hidden; margin: 5vh 0;
+}
+#map-svg {
+  width: 100%; height: 100%;
+  transition: transform 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: 38% 53%;
+}
+#map-svg.zoom { transform: scale(1.5); }
+.origin-cards {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--div); margin: 4vh 0;
+}
+.o-card { background: var(--bg2); padding: 3rem 2.5rem; }
+.o-card-title { font-family: var(--head); font-size: 1.7rem; font-weight: 700; margin: 0.75rem 0 0.5rem; letter-spacing: -0.02em; }
+.o-card-body { font-size: 0.875rem; color: var(--muted); line-height: 1.7; }
+
+/* Globe info cards */
+.globe-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #0d0d0d;
+  border-top: 1px solid rgba(184,154,99,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.globe-card {
+  padding: 3.5rem 3rem;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.globe-card:last-child { border-right: none; }
+.globe-card-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #B89A63;
+  text-shadow: 0 0 10px rgba(184,154,99,0.4);
+  margin-bottom: 1.1rem;
+}
+.globe-card-title {
+  font-family: var(--head);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.9rem;
+}
+.globe-card-body {
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: #B8B3AA;
+}
+
+/* Timeline */
+.tl { margin-top: 8vh; }
+.tl-head { font-family: var(--sans); font-weight: 300; font-size: clamp(1.1rem, 2.2vw, 1.6rem); color: var(--muted); margin-bottom: 4vh; letter-spacing: 0.04em; }
+.tl-track { position: relative; padding: 2rem 0; }
+.tl-line { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--div); transform: translateY(-50%); }
+.tl-fill { height: 100%; width: 0; background: var(--bronze); transition: width 2s var(--ease); }
+.tl-steps { display: flex; justify-content: space-between; position: relative; z-index: 2; }
+.tl-step { display: flex; flex-direction: column; align-items: center; gap: 0.9rem; flex: 1; }
+.tl-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--bg2); border: 2px solid var(--div);
+  transition: border-color 0.5s, background 0.5s;
+}
+.tl-step.on .tl-dot { border-color: var(--bronze); background: var(--bronze); }
+.tl-lbl {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted); text-align: center;
+  transition: color 0.5s;
+}
+.tl-step.on .tl-lbl { color: var(--text); }
+
+/* ═══════════════════════════════════════════════
+   THE MATERIAL
+═══════════════════════════════════════════════ */
+#material { padding: 14vh 0; background: var(--bg); }
+.mat-intro { margin-bottom: 6vh; }
+.mat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+}
+.mat-item {
+  position: relative; overflow: hidden; cursor: default;
+  background: #0f0f0f;
+  aspect-ratio: 1/1;
+}
+.mat-img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 1s var(--ease);
+}
+.mat-item:hover .mat-img { transform: scale(1.06); }
+.mat-over {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(9,9,9,0.95) 0%, rgba(9,9,9,0.35) 50%, transparent 100%);
+  display: flex; align-items: flex-end; padding: 1.5rem;
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.mat-item:hover .mat-over { opacity: 1; }
+.mat-over-inner { display: flex; flex-direction: column; gap: 0.4rem; }
+.mat-name { font-family: var(--head); font-size: clamp(1rem,1.8vw,1.5rem); font-weight: 400; letter-spacing: 0.04em; }
+.mat-uses { font-family: var(--body); font-size: 0.72rem; color: var(--muted); line-height: 1.5; text-transform: none; }
+.mat-name-always {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(9,9,9,0.88) 0%, transparent 100%);
+  font-family: var(--head); font-size: clamp(1rem,1.6vw,1.4rem); font-weight: 400; letter-spacing: 0.04em;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.mat-item:hover .mat-name-always { opacity: 0; }
+
+/* ═══════════════════════════════════════════════
+   CINEMATIC PIN
+═══════════════════════════════════════════════ */
+#pin {
+  position: relative; height: 80vh; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.pin-bg { position: absolute; inset: -12%; will-change: transform; }
+.pin-bg img { width: 100%; height: 100%; object-fit: cover; }
+.pin-ov { position: absolute; inset: 0; background: rgba(9,9,9,0.52); }
+.pin-caption {
+  position: relative; z-index: 2;
+  font-family: var(--head); font-size: clamp(1.7rem, 4vw, 3.4rem);
+  font-weight: 400; line-height: 1.28; letter-spacing: -0.015em;
+  text-align: center; color: var(--text); max-width: 740px;
+}
+.pin-caption em { color: #F5F2EC; font-style: italic; text-shadow: 0 0 8px rgba(184,154,99,1), 0 0 22px rgba(184,154,99,0.85), 0 0 55px rgba(184,154,99,0.5); }
+
+/* ═══════════════════════════════════════════════
+   LUANDA COMPOUND (horizontal scroll)
+═══════════════════════════════════════════════ */
+#compound { background: var(--bg); }
+.compound-intro { padding: 14vh 6vw 6vh; }
+.compound-head {
+  font-family: var(--head);
+  font-size: clamp(1.6rem, 3.4vw, 3rem);
+  font-weight: 400; line-height: 1.15; letter-spacing: -0.015em;
+  max-width: 560px;
+}
+/* Sticky horizontal scroll container */
+.compound-outer {
+  position: relative;
+  height: calc(100vh * 5);
+}
+.compound-sticky {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+}
+.compound-track {
+  display: flex; height: 100%; will-change: transform;
+  transition: transform 0s;
+}
+.compound-slide {
+  flex-shrink: 0; width: 85vw; height: 100%;
+  position: relative; margin-right: 3px;
+}
+.compound-slide img,
+.compound-slide video { width: 100%; height: 100%; object-fit: cover; }
+.compound-slide-ov {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(9,9,9,0.88) 0%, transparent 55%);
+}
+.compound-slide-info { position: absolute; bottom: 3.5rem; left: 3.5rem; }
+.slide-num { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0.6rem; }
+.slide-name { font-family: var(--head); font-size: clamp(1.5rem, 3.2vw, 2.7rem); font-weight: 400; letter-spacing: -0.015em; }
+.compound-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--div); z-index: 10; }
+.compound-bar-fill { height: 100%; width: 0; background: var(--bronze); transition: width 0.1s linear; }
+
+/* ═══════════════════════════════════════════════
+   FINISHED PROJECTS
+═══════════════════════════════════════════════ */
+#projects { padding: 14vh 0; background: var(--bg); }
+#projects .eyebrow {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(184,154,99,0.55), 0 0 28px rgba(184,154,99,0.22);
+}
+.proj-cats {
+  display: flex; flex-wrap: wrap; gap: 0;
+  margin: 3vh 0 0; padding-bottom: 3rem;
+  border-bottom: 1px solid var(--div);
+}
+.cat-btn {
+  background: none; border: none; position: relative;
+  color: var(--muted); font-family: var(--sans); font-size: 9px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 10px 18px; cursor: pointer; transition: color 0.3s;
+}
+.cat-btn::after {
+  content: ''; position: absolute; bottom: -3rem; left: 18px; right: 18px;
+  height: 1px; background: var(--bronze);
+  transform: scaleX(0); transition: transform 0.35s var(--ease);
+}
+.cat-btn:hover { color: #E8E3DA; }
+.cat-btn.on {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(184,154,99,0.6), 0 0 28px rgba(184,154,99,0.25);
+}
+.cat-btn.on::after { transform: scaleX(1); }
+.proj-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 2px; }
+.proj-item {
+  position: relative; aspect-ratio: 4/3; overflow: hidden;
+  background: #111111; cursor: default; transition: opacity 0.4s;
+}
+.proj-item::after {
+  content: ''; position: absolute; inset: 0;
+  border: 1px solid rgba(184,154,99,0.12);
+  transition: border-color 0.35s; pointer-events: none; z-index: 2;
+}
+.proj-item:hover::after { border-color: rgba(184,154,99,0.35); }
+.proj-item.hidden { opacity: 0; pointer-events: none; display: none; }
+.proj-ph {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 1.8rem 2rem;
+}
+.proj-ph-lbl {
+  font-family: var(--sans); font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(184,154,99,0.45);
+}
+.proj-item img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; transition: transform 0.7s var(--ease);
+}
+.proj-item:hover img { transform: scale(1.04); }
+.proj-item-ov {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(9,9,9,0.75) 0%, transparent 55%);
+  opacity: 0; transition: opacity 0.4s;
+}
+.proj-item:hover .proj-item-ov { opacity: 1; }
+.proj-item-info {
+  position: absolute; bottom: 1.8rem; left: 2rem; z-index: 2;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.proj-item:hover .proj-item-info { opacity: 1; transform: translateY(0); }
+.proj-item-lbl {
+  font-family: var(--sans); font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════
+   EXPORT & LOGISTICS
+═══════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════
+   SUSTAINABILITY
+═══════════════════════════════════════════════ */
+#sustain {
+  position: relative; min-height: 88vh; overflow: hidden;
+  display: flex; align-items: center; padding: 12vh 0;
+}
+.sustain-bg { position: absolute; inset: -12%; will-change: transform; }
+.sustain-bg img { width: 100%; height: 100%; object-fit: cover; }
+.sustain-ov {
+  position: absolute; inset: 0;
+  background: linear-gradient(130deg, rgba(9,9,9,0.96) 0%, rgba(9,9,9,0.78) 55%, rgba(9,9,9,0.38) 100%);
+}
+.sustain-content { position: relative; z-index: 2; max-width: 640px; }
+.sustain-body { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 3rem; }
+
+/* ═══════════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════════ */
+#contact {
+  padding: 16vh 0 14vh; background: var(--bg);
+  border-top: 1px solid var(--div);
+}
+.contact-sub {
+  margin-top: 1.8rem; max-width: 500px;
+  font-family: var(--sans); font-size: 0.88rem; font-weight: 300;
+  color: var(--muted); line-height: 1.85;
+}
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8vw; margin-top: 8vh; align-items: start;
+}
+.contact-form { display: flex; flex-direction: column; gap: 2rem; }
+.fg label {
+  display: block; font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(184,154,99,0.65); margin-bottom: 0.65rem;
+}
+.fg input, .fg textarea {
+  width: 100%; background: transparent; border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: var(--text); font-family: var(--sans); font-size: 0.92rem; font-weight: 300;
+  padding: 0.75rem 0; min-height: 44px; outline: none; transition: border-color 0.3s;
+}
+.fg input::placeholder, .fg textarea::placeholder { color: rgba(184,179,170,0.22); }
+.fg input:focus, .fg textarea:focus { border-color: rgba(184,154,99,0.6); }
+.fg textarea { height: 120px; resize: none; }
+.form-btn {
+  display: inline-flex; align-items: center; gap: 1rem; cursor: pointer;
+  background: rgba(255,255,255,0.14); border: none; border-radius: 4px;
+  color: #ffffff; font-family: var(--sans); font-size: 11px; font-weight: 300;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 10px 20px; min-height: 44px; margin-top: 0.75rem;
+  transition: background 0.25s ease, text-shadow 0.25s ease, gap 0.3s ease; width: fit-content;
+}
+.form-btn:hover {
+  background: rgba(255,255,255,0.2);
+  text-shadow: 0 0 12px rgba(184,154,99,0.8), 0 0 28px rgba(184,154,99,0.4);
+  gap: 1.5rem;
+}
+.contact-info { display: flex; flex-direction: column; gap: 0; }
+.ci { padding: 2rem 0; border-bottom: 1px solid var(--div); }
+.ci:first-child { border-top: 1px solid var(--div); }
+.ci-lbl {
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(184,154,99,0.6); margin-bottom: 0.65rem;
+}
+.ci-val {
+  font-family: var(--head); font-size: 1.25rem; font-weight: 300;
+  color: var(--text); line-height: 1.3;
+}
+.ci-val a { color: var(--text); transition: color 0.3s; }
+.ci-val a:hover { color: var(--bronze); }
+.contact-note {
+  margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--div);
+  font-family: var(--sans); font-size: 9px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(184,179,170,0.4); line-height: 2;
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer {
+  padding: 5vh 6vw; background: var(--bg);
+  border-top: 1px solid var(--div);
+  display: flex; align-items: flex-end; justify-content: space-between;
+}
+.ft-logo { font-family: var(--head); font-size: 2.1rem; font-weight: 400; letter-spacing: 0.01em; margin-bottom: 0.6rem; }
+.ft-tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); line-height: 1.9; }
+.ft-copy { font-size: 10px; color: var(--muted); opacity: 0.45; }
+
+/* ═══════════════════════════════════════════════
+   LANGUAGE SYSTEM
+═══════════════════════════════════════════════ */
+[data-pt] { display: none; }
+.pt [data-en]   { display: none; }
+.pt [data-pt]   { display: block; }
+.pt span[data-pt], .pt em[data-pt], .pt a[data-pt], .pt p[data-pt] { display: inline; }
+.pt span[data-en], .pt em[data-en], .pt a[data-en], .pt p[data-en] { display: none; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .nav-links, .nav-right .lang-btn, .nav-right .lang-sep { display: none; }
+  .nav-ham { display: flex; }
+  .ov-grid { grid-template-columns: 1fr; }
+  .ov-left { padding-right: 0; border-right: none; border-bottom: 1px solid var(--div); padding-bottom: 4rem; margin-bottom: 4rem; }
+  .ov-right { padding-left: 0; }
+  .origin-cards { grid-template-columns: 1fr; }
+  .globe-cards { grid-template-columns: 1fr; }
+  .globe-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .globe-card:last-child { border-bottom: none; }
+  .mat-grid { grid-template-columns: repeat(2, 1fr); }
+  .mat-over { opacity: 1; }
+  .proj-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 5vh; }
+  footer { flex-direction: column; align-items: flex-start; gap: 2.5rem; }
+}
+@media (max-width: 760px) {
+  .ov-stats { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .ov-stats { grid-template-columns: 1fr 1fr; gap: 3rem 2rem; }
+  .proj-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════
+   WIREFRAME GLOBE SECTION
+═══════════════════════════════════════════════ */
+#globe-section {
+  height: 200vh;
+  position: relative;
+  background: var(--bg);
+}
+#globe-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#globe-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+#globe-text {
+  position: absolute;
+  bottom: 12vh;
+  left: 6vw;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+#globe-text .eyebrow {
+  margin-bottom: 1.2rem;
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(184,154,99,0.6), 0 0 30px rgba(184,154,99,0.25);
+  letter-spacing: 0.18em;
+}
+#globe-text .headline { max-width: 520px; }
+#overview .eyebrow,
+#material .eyebrow,
+#compound .eyebrow,
+#sustain .eyebrow,
+#contact .eyebrow {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(184,154,99,0.55), 0 0 28px rgba(184,154,99,0.22);
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════ -->
+<header id="nav">
+  <a href="#" class="nav-logo" id="nav-logo-link">
+    <img src="logo-01.png" alt="FerroNor" class="nav-logo-img" onerror="this.style.display='none';document.getElementById('nav-logo-txt').style.display='block'">
+    <span id="nav-logo-txt" style="display:none">FerroNor</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#overview"><span data-en>Overview</span><span data-pt>Visão Geral</span></a></li>
+    <li><a href="#origin"><span data-en>Origin</span><span data-pt>Origem</span></a></li>
+    <li><a href="#material"><span data-en>Products</span><span data-pt>Produtos</span></a></li>
+    <li><a href="#compound"><span data-en>Operations</span><span data-pt>Operações</span></a></li>
+    <li><a href="#projects"><span data-en>Projects</span><span data-pt>Projetos</span></a></li>
+    <li><a href="#contact"><span data-en>Contact</span><span data-pt>Contacto</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-btn on" id="btn-en" onclick="setLang('en')">EN</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" id="btn-pt" onclick="setLang('pt')">PT</button>
+    <button class="nav-ham" id="ham" onclick="toggleMob()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ══ MOBILE MENU ═══════════════════════════════ -->
+<div id="mob-menu">
+  <nav>
+    <a href="#overview" onclick="closeMob()"><span data-en>Overview</span><span data-pt>Visão Geral</span></a>
+    <a href="#origin" onclick="closeMob()"><span data-en>Origin</span><span data-pt>Origem</span></a>
+    <a href="#material" onclick="closeMob()"><span data-en>Products</span><span data-pt>Produtos</span></a>
+    <a href="#compound" onclick="closeMob()"><span data-en>Operations</span><span data-pt>Operações</span></a>
+    <a href="#projects" onclick="closeMob()"><span data-en>Projects</span><span data-pt>Projetos</span></a>
+    <a href="#contact" onclick="closeMob()"><span data-en>Contact</span><span data-pt>Contacto</span></a>
+    <div class="mob-lang">
+      <button class="lang-btn on" onclick="setLang('en');closeMob()">EN</button>
+      <span class="lang-sep">/</span>
+      <button class="lang-btn" onclick="setLang('pt');closeMob()">PT</button>
+    </div>
+  </nav>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     § 01 HERO
+══════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline preload="auto"
+           aria-hidden="true">
+      <source src="Videos/kling_20260624_VIDEO_Create_a_s_662_0.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-fog"></div>
+
+  <div class="wrap hero-content">
+    <p class="hero-eyebrow">
+      <span data-en>Luanda · Angola · FerroNor, LDA</span>
+      <span data-pt>Luanda · Angola · FerroNor, LDA</span>
+    </p>
+    <h1 class="hero-title" aria-label="Wood Industry In Angola">
+      <span class="line"><span>Wood</span></span>
+      <span class="line"><span>Industry</span></span>
+      <span class="line"><span>In Angola</span></span>
+    </h1>
+    <p class="hero-sub">
+      <span data-en>LUXURY WOOD EXPORT</span>
+      <span data-pt>LUXURY WOOD EXPORT</span>
+    </p>
+    <a href="#compound" class="hero-cta">
+      <span data-en>Explore Operations</span>
+      <span data-pt>Explorar Operações</span>
+    </a>
+  </div>
+
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     § 02 OVERVIEW
+══════════════════════════════════════════════ -->
+<section id="overview">
+  <div class="wrap">
+    <div class="ov-grid">
+      <div class="ov-left">
+        <p class="eyebrow r">
+          <span data-en>01 — Company Overview</span>
+          <span data-pt>01 — Visão Geral da Empresa</span>
+        </p>
+        <h2 class="headline r d1" style="margin-top:2rem;max-width:520px">
+          <span data-en>FerroNor LTD Company</span>
+          <span data-pt>FerroNor LTD</span>
+        </h2>
+      </div>
+      <div class="ov-right">
+        <div class="ov-body">
+          <p class="body-copy r">
+            <span data-en>FerroNor was founded in 2013 in Angola and has since operated across a range of industrial sectors.</span>
+            <span data-pt>A FerroNor foi fundada em 2013 em Angola e desde então tem operado em vários setores industriais.</span>
+          </p>
+          <p class="body-copy r d1">
+            <span data-en>The company entered the wood industry in 2017 with the objective of becoming the largest exporter of processed wood from West Africa.</span>
+            <span data-pt>A empresa entrou no setor madeireiro em 2017 com o objetivo de se tornar o maior exportador de madeira processada da África Ocidental.</span>
+          </p>
+          <p class="body-copy r d2">
+            <span data-en>Headquarters and operations are based in Luanda. The wood division supports more than 200 people directly and hundreds more indirectly.</span>
+            <span data-pt>A sede e as operações estão situadas em Luanda. A divisão madeireira apoia diretamente mais de 200 pessoas e centenas mais indiretamente.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="ov-stats">
+      <div class="r">
+        <div class="stat-num" data-count="2013" data-from="2000">2013</div>
+        <div class="stat-lbl"><span data-en>Founded</span><span data-pt>Fundada</span></div>
+      </div>
+      <div class="r d1">
+        <div class="stat-num" data-count="2017" data-from="2000">2017</div>
+        <div class="stat-lbl"><span data-en>Entered Wood Industry</span><span data-pt>Entrada no Setor Madeireiro</span></div>
+      </div>
+      <div class="r d2">
+        <div class="stat-num" data-count="200" data-suffix="+">200+</div>
+        <div class="stat-lbl"><span data-en>Employees</span><span data-pt>Colaboradores</span></div>
+      </div>
+      <div class="r d3">
+        <div class="stat-num" data-count="3">3</div>
+        <div class="stat-lbl"><span data-en>Continents Served</span><span data-pt>Continentes Servidos</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-rule"></div>
+
+<!-- ══════════════════════════════════════════════
+     § GLOBE — wireframe d3 globe scroll section
+══════════════════════════════════════════════ -->
+<section id="globe-section">
+  <div id="globe-sticky">
+    <canvas id="globe-canvas"></canvas>
+    <div id="globe-text">
+      <p class="eyebrow"><span data-en>Our Operation</span><span data-pt>A Nossa Operação</span></p>
+      <h2 class="headline">
+        <span data-en>Rooted in Angola.<br>Reaching the globe.</span>
+        <span data-pt>Enraizados em Angola.<br>A alcançar o globo.</span>
+      </h2>
+    </div>
+  </div>
+</section>
+
+<div class="globe-cards">
+  <div class="globe-card r">
+    <p class="globe-card-eyebrow"><span data-en>Base of Operations</span><span data-pt>Base de Operações</span></p>
+    <h3 class="globe-card-title">Angola</h3>
+    <p class="globe-card-body"><span data-en>One of Africa's most resource-rich nations, with vast tropical hardwood reserves and direct Atlantic access.</span><span data-pt>Uma das nações mais ricas em recursos de África, com vastas reservas de madeira tropical e acesso direto ao Atlântico.</span></p>
+  </div>
+  <div class="globe-card r d1">
+    <p class="globe-card-eyebrow"><span data-en>HQ &amp; Main Port</span><span data-pt>Sede e Porto Principal</span></p>
+    <h3 class="globe-card-title">Luanda</h3>
+    <p class="globe-card-body"><span data-en>Angola's capital and largest port city — FerroNor's strategic gateway to global markets.</span><span data-pt>Capital e maior cidade portuária de Angola — porta de entrada estratégica da FerroNor para os mercados globais.</span></p>
+  </div>
+  <div class="globe-card r d2">
+    <p class="globe-card-eyebrow"><span data-en>Export Reach</span><span data-pt>Alcance de Exportação</span></p>
+    <h3 class="globe-card-title"><span data-en>Europe · Africa · Asia</span><span data-pt>Europa · África · Ásia</span></h3>
+    <p class="globe-card-body"><span data-en>Three continents. Clients across luxury furniture, marine, and premium architecture sectors.</span><span data-pt>Três continentes. Clientes nos setores de mobiliário de luxo, náutica e arquitetura premium.</span></p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     § 03 OUR FACTORY IN ANGOLA
+══════════════════════════════════════════════ -->
+<section id="compound">
+  <div class="compound-intro">
+    <p class="eyebrow r"><span data-en>03 — Our Factory In Angola</span><span data-pt>03 — A Nossa Fábrica em Angola</span></p>
+    <h2 class="compound-head r d1" style="margin-top:1.75rem">
+      <span data-en>Precision cutting.<br>Strict control.<br>International-standard packing.</span>
+      <span data-pt>Corte de precisão.<br>Controlo rigoroso.<br>Embalagem de padrão internacional.</span>
+    </h2>
+  </div>
+  <div class="compound-outer" id="compound-outer">
+    <div class="compound-sticky" id="compound-sticky">
+      <div class="compound-track" id="compound-track">
+        <div class="compound-slide">
+          <img src="images/Wood%20Process/Felled%20log%20in%20forest%20_%20enhanced.png" alt="Forest selection" loading="lazy">
+          <div class="compound-slide-ov"></div>
+          <div class="compound-slide-info">
+            <div class="slide-num">01</div>
+            <div class="slide-name"><span data-en>Forest Selection</span><span data-pt>Seleção na Floresta</span></div>
+          </div>
+        </div>
+        <div class="compound-slide">
+          <img src="images/Wood%20Process/Logging%20truck%20_%20enhanced.png" alt="Log harvesting" loading="lazy">
+          <div class="compound-slide-ov"></div>
+          <div class="compound-slide-info">
+            <div class="slide-num">02</div>
+            <div class="slide-name"><span data-en>Log Harvesting</span><span data-pt>Extração de Toros</span></div>
+          </div>
+        </div>
+        <div class="compound-slide">
+          <img src="images/Wood%20Process/Step%201%20_%20rosewood%20logs%204_3.png" alt="Logs at the mill" loading="lazy">
+          <div class="compound-slide-ov"></div>
+          <div class="compound-slide-info">
+            <div class="slide-num">03</div>
+            <div class="slide-name"><span data-en>Logs At The Mill</span><span data-pt>Toros na Serralharia</span></div>
+          </div>
+        </div>
+        <div class="compound-slide">
+          <img src="images/Wood%20Process/Sawmill%20bandsaw%20_%20enhanced.png" alt="Precision cutting" loading="lazy">
+          <div class="compound-slide-ov"></div>
+          <div class="compound-slide-info">
+            <div class="slide-num">04</div>
+            <div class="slide-name"><span data-en>Precision Cutting</span><span data-pt>Corte de Precisão</span></div>
+          </div>
+        </div>
+        <div class="compound-slide">
+          <video autoplay muted loop playsinline>
+            <source src="Videos/Video%20of%20Step%203%20_%20log%20revealing%20red%20heart%20in%20Ang.m4v" type="video/mp4">
+          </video>
+          <div class="compound-slide-ov"></div>
+          <div class="compound-slide-info">
+            <div class="slide-num">05</div>
+            <div class="slide-name"><span data-en>Revealing The Heart</span><span data-pt>Revelar o Coração</span></div>
+          </div>
+        </div>
+        <div class="compound-slide">
+          <img src="images/Wood%20Process/Upscaled%20lumber%20bundles.png" alt="Packaging and export" loading="lazy">
+          <div class="compound-slide-ov"></div>
+          <div class="compound-slide-info">
+            <div class="slide-num">06</div>
+            <div class="slide-name"><span data-en>Packaging &amp; Export</span><span data-pt>Embalagem &amp; Exportação</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="compound-bar"><div class="compound-bar-fill" id="c-fill"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     CINEMATIC PIN
+══════════════════════════════════════════════ -->
+<section id="pin">
+  <div class="pin-bg" id="pin-bg">
+    <img src="images/Wood%20Process/Sawmill%20aerial%20_%20full%20frame.png" alt="Sawmill aerial view" loading="lazy">
+  </div>
+  <div class="pin-ov"></div>
+  <p class="pin-caption r">
+    <span data-en>One company.<br>From the <em>standing forest</em><br>to the loaded container.</span>
+    <span data-pt>Uma empresa.<br>Da <em>floresta em pé</em><br>ao contentor carregado.</span>
+  </p>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     § 04 OUR LUXURY WOOD
+══════════════════════════════════════════════ -->
+<section id="material">
+  <div class="wrap">
+    <div class="mat-intro">
+      <p class="eyebrow r"><span data-en>04 — Our Luxury Wood</span><span data-pt>04 — A Nossa Madeira de Luxo</span></p>
+      <h2 class="headline r d1" style="margin-top:1.75rem;max-width:780px">
+        <span data-en>Rare African hardwoods —<br>not commodity timber.</span>
+        <span data-pt>Madeiras de lei africanas raras —<br>não madeira de mercado.</span>
+      </h2>
+      <p class="body-copy r d2" style="margin-top:2rem">
+        <span data-en>We work exclusively with premium tropical hardwoods specified for luxury furniture, marine construction, fine architecture and demanding projects worldwide. Only timber worth shipping across the world.</span>
+        <span data-pt>Trabalhamos exclusivamente com madeiras tropicais premium especificadas para mobiliário de luxo, construção naval, arquitetura refinada e projetos exigentes em todo o mundo. Apenas madeira que vale a pena enviar para o outro lado do mundo.</span>
+      </p>
+    </div>
+  </div>
+
+  <div style="padding:0 6vw">
+    <div class="mat-grid">
+      <!-- 1 Iroko -->
+      <div class="mat-item r">
+        <img class="mat-img" src="images/woods/iroko.png" alt="Iroko hardwood" loading="lazy">
+        <div class="mat-name-always">Iroko</div>
+        <div class="mat-over">
+          <div class="mat-over-inner">
+            <div class="mat-name">Iroko</div>
+            <div class="mat-uses"><span data-en>Marine construction, outdoor furniture, window frames, flooring, boat building, heavy carpentry.</span><span data-pt>Construção naval, mobiliário exterior, caixilharia, pavimentos, construção de barcos, carpintaria pesada.</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 2 African Padauk -->
+      <div class="mat-item r d1">
+        <img class="mat-img" src="images/woods/padauk.png" alt="African Padauk" loading="lazy">
+        <div class="mat-name-always">African Padauk</div>
+        <div class="mat-over">
+          <div class="mat-over-inner">
+            <div class="mat-name">African Padauk</div>
+            <div class="mat-uses"><span data-en>High-end furniture, flooring, musical instruments, decorative veneers, turnings and carvings.</span><span data-pt>Mobiliário de luxo, pavimentos, instrumentos musicais, folheados decorativos, torneados e entalhes.</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 3 Sapele -->
+      <div class="mat-item r d2">
+        <img class="mat-img" src="images/woods/sapele.png" alt="Sapele hardwood" loading="lazy">
+        <div class="mat-name-always">Sapele</div>
+        <div class="mat-over">
+          <div class="mat-over-inner">
+            <div class="mat-name">Sapele</div>
+            <div class="mat-uses"><span data-en>Furniture, cabinetry, musical instruments, veneer, interior joinery, doors and windows.</span><span data-pt>Mobiliário, marcenaria, instrumentos musicais, folheado, carpintaria interior, portas e janelas.</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 4 Sipo / Utile -->
+      <div class="mat-item r d3">
+        <img class="mat-img" src="images/woods/sipo.png" alt="Sipo Utile" loading="lazy">
+        <div class="mat-name-always">Sipo / Utile</div>
+        <div class="mat-over">
+          <div class="mat-over-inner">
+            <div class="mat-name">Sipo / Utile</div>
+            <div class="mat-uses"><span data-en>Furniture, joinery, boat building, veneers, interior trim, high-quality plywood.</span><span data-pt>Mobiliário, carpintaria, construção naval, folheados, revestimento interior, contraplacado de qualidade.</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 5 Ngulumazi -->
+      <div class="mat-item r">
+        <img class="mat-img" src="images/woods/ngulumazi.png" alt="Ngulumazi" loading="lazy">
+        <div class="mat-name-always">Ngulumazi</div>
+        <div class="mat-over">
+          <div class="mat-over-inner">
+            <div class="mat-name">Ngulumazi</div>
+            <div class="mat-uses"><span data-en>General construction, heavy-duty furniture, railway sleepers, flooring, exterior structural work.</span><span data-pt>Construção geral, mobiliário robusto, dormentes ferroviários, pavimentos, obra estrutural exterior.</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 6 Muanza -->
+      <div class="mat-item r d1">
+        <img class="mat-img" src="images/woods/muanza.png" alt="Muanza" loading="lazy">
+        <div class="mat-name-always">Muanza</div>
+        <div class="mat-over">
+          <div class="mat-over-inner">
+            <div class="mat-name">Muanza</div>
+            <div class="mat-uses"><span data-en>Local construction, furniture, flooring, general carpentry, veneer production.</span><span data-pt>Construção local, mobiliário, pavimentos, carpintaria geral, produção de folheado.</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 7 Kibaba -->
+      <div class="mat-item r d2">
+        <img class="mat-img" src="images/woods/kibaba.png" alt="Kibaba" loading="lazy">
+        <div class="mat-name-always">Kibaba</div>
+        <div class="mat-over">
+          <div class="mat-over-inner">
+            <div class="mat-name">Kibaba</div>
+            <div class="mat-uses"><span data-en>Heavy-duty flooring, outdoor decking, bridges, railway sleepers, industrial applications.</span><span data-pt>Pavimentos pesados, decks exteriores, pontes, dormentes ferroviários, aplicações industriais.</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 8 Kitiba -->
+      <div class="mat-item r d3">
+        <img class="mat-img" src="images/woods/kitiba.png" alt="Kitiba" loading="lazy">
+        <div class="mat-name-always">Kitiba</div>
+        <div class="mat-over">
+          <div class="mat-over-inner">
+            <div class="mat-name">Kitiba</div>
+            <div class="mat-uses"><span data-en>Fine furniture, decorative carvings, traditional crafts, cabinetry, turned objects.</span><span data-pt>Mobiliário fino, entalhes decorativos, artesanato tradicional, marcenaria, objetos torneados.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-rule"></div>
+
+<!-- ══════════════════════════════════════════════
+     § 06 FINISHED PROJECTS
+══════════════════════════════════════════════ -->
+<section id="projects">
+  <div class="wrap">
+    <p class="eyebrow r"><span data-en>05 — Finished Projects</span><span data-pt>05 — Projetos Realizados</span></p>
+    <h2 class="headline r d1" style="margin-top:1.75rem;max-width:680px">
+      <span data-en>Crafted from Angolan hardwood.<br>Built for the world.</span>
+      <span data-pt>Criado com madeira angolana.<br>Construído para o mundo.</span>
+    </h2>
+    <div class="proj-cats r d2">
+      <button class="cat-btn on" onclick="filterCat(this,'all')"><span data-en>All</span><span data-pt>Todos</span></button>
+      <button class="cat-btn" onclick="filterCat(this,'kitchen')"><span data-en>Kitchens</span><span data-pt>Cozinhas</span></button>
+      <button class="cat-btn" onclick="filterCat(this,'table')"><span data-en>Tables</span><span data-pt>Mesas</span></button>
+      <button class="cat-btn" onclick="filterCat(this,'staircase')"><span data-en>Staircases</span><span data-pt>Escadas</span></button>
+      <button class="cat-btn" onclick="filterCat(this,'yacht')"><span data-en>Yacht Decking</span><span data-pt>Deck Náutico</span></button>
+      <button class="cat-btn" onclick="filterCat(this,'pool')"><span data-en>Pool Decking</span><span data-pt>Deck de Piscina</span></button>
+      <button class="cat-btn" onclick="filterCat(this,'cladding')"><span data-en>Wall Cladding</span><span data-pt>Revestimento</span></button>
+      <button class="cat-btn" onclick="filterCat(this,'flooring')"><span data-en>Flooring</span><span data-pt>Pavimentos</span></button>
+      <button class="cat-btn" onclick="filterCat(this,'furniture')"><span data-en>Furniture</span><span data-pt>Mobiliário</span></button>
+    </div>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-item r"    data-cat="kitchen">
+      <img src="images/Projects%20/29%20Organic%20Home%20Decor%20Ideas%20That%20Bring%20Fresh%20Natural%20Joy.jpeg" alt="Solid-Wood Kitchens" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Solid-Wood Kitchens</span><span data-pt>Cozinhas em Madeira Maciça</span></div></div>
+    </div>
+    <div class="proj-item r d1" data-cat="staircase">
+      <img src="images/Projects%20/Modern%20Floating%20Staircase%20%E2%80%94%20LED%20Step%20Lighting%20%26%20Glass%20Railing%20Design.jpeg" alt="Staircases" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Staircases</span><span data-pt>Escadas</span></div></div>
+    </div>
+    <div class="proj-item r d2" data-cat="yacht">
+      <img src="images/Projects%20/Custom%20Line%2050%20-%20Luxury%20Mega%20Yachts.jpeg" alt="Yacht Decking" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Yacht Decking</span><span data-pt>Deck Náutico</span></div></div>
+    </div>
+    <div class="proj-item r"    data-cat="flooring">
+      <img src="images/Projects%20/Luxury%20wood%20flooring.png" alt="Flooring" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Flooring</span><span data-pt>Pavimentos</span></div></div>
+    </div>
+    <div class="proj-item r d1" data-cat="pool">
+      <img src="images/Projects%20/Small%20Pool%20Deck%20Ideas%202026_%20Mocha%20Lounge%20Nook%20Deck.jpeg" alt="Pool Decking" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Pool Decking</span><span data-pt>Deck de Piscina</span></div></div>
+    </div>
+    <div class="proj-item r d2" data-cat="cladding">
+      <img src="images/Projects%20/WEO%C2%AE35%20Cladding.jpeg" alt="Wall Cladding" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Wall Cladding</span><span data-pt>Revestimento de Parede</span></div></div>
+    </div>
+    <div class="proj-item r"    data-cat="staircase">
+      <img src="images/Projects%20/Modern%20Staircase%20With%20Linear%20Lighting%20And%20Polished%20Warm%20Flooring.jpeg" alt="Staircases" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Staircases</span><span data-pt>Escadas</span></div></div>
+    </div>
+    <div class="proj-item r d1" data-cat="table">
+      <img src="images/Projects%20/633387443962862.jpeg" alt="Executive Tables" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Executive Tables</span><span data-pt>Mesas Executivas</span></div></div>
+    </div>
+    <div class="proj-item r d2" data-cat="furniture">
+      <img src="images/Projects%20/29%20Rustic%20Modern%20Living%20Room%20Ideas%20To%20Bring%20A%20Fresh%20Twist%20To%20Country%20Charm%20-%20Courtneys%20World.jpeg" alt="Custom Furniture" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Custom Furniture</span><span data-pt>Mobiliário Personalizado</span></div></div>
+    </div>
+    <div class="proj-item r"    data-cat="yacht">
+      <img src="images/Projects%20/Mahogany%20decks%20on%20Liberty.jpeg" alt="Yacht Decking" loading="lazy" style="object-position: center bottom;">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Yacht Decking</span><span data-pt>Deck Náutico</span></div></div>
+    </div>
+    <div class="proj-item r d1" data-cat="pool">
+      <img src="images/Projects%20/32%20Best%20Backyard%20Ideas%20for%202025_%20Creative%2C%20Cozy%2C%20and%20Budget-Friendly%20Designs.jpeg" alt="Pool Decking" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Pool Decking</span><span data-pt>Deck de Piscina</span></div></div>
+    </div>
+    <div class="proj-item r d2" data-cat="flooring">
+      <img src="images/Projects%20/Wood%20flooring%201.png" alt="Flooring" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Flooring</span><span data-pt>Pavimentos</span></div></div>
+    </div>
+    <div class="proj-item r"    data-cat="cladding">
+      <img src="images/Projects%20/%E2%98%94%EF%B8%8F%20%C2%BFTu%20fachada%20sufre%20con%20las%20lluvias_%20Con%20nuestros%E2%80%A6.jpeg" alt="Wall Cladding" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Wall Cladding</span><span data-pt>Revestimento de Parede</span></div></div>
+    </div>
+    <div class="proj-item r d1" data-cat="furniture">
+      <img src="images/Projects%20/29%20Rustic%20Cabin%20Living%20Room%20Ideas%20That%20Feel%20Warm%20and%20Inviting.jpeg" alt="Custom Furniture" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Custom Furniture</span><span data-pt>Mobiliário Personalizado</span></div></div>
+    </div>
+    <div class="proj-item r d2" data-cat="table">
+      <img src="images/Projects%20/This%20item%20is%20unavailable%20-%20Etsy.jpeg" alt="Executive Tables" loading="lazy">
+      <div class="proj-item-ov"></div><div class="proj-item-info"><div class="proj-item-lbl"><span data-en>Executive Tables</span><span data-pt>Mesas Executivas</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-rule"></div>
+
+
+<!-- ══════════════════════════════════════════════
+     § 08 SUSTAINABILITY
+══════════════════════════════════════════════ -->
+<section id="sustain">
+  <div class="sustain-bg" id="sustain-bg">
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1920&q=80" alt="Dense African forest canopy" loading="lazy">
+  </div>
+  <div class="sustain-ov"></div>
+  <div class="wrap">
+    <div class="sustain-content">
+      <p class="eyebrow r"><span data-en>06 — Sustainability</span><span data-pt>06 — Sustentabilidade</span></p>
+      <h2 class="headline r d1" style="margin-top:1.75rem;max-width:540px">
+        <span data-en>Responsible logging is central to company policy.</span>
+        <span data-pt>A exploração florestal responsável é central na política da empresa.</span>
+      </h2>
+      <div class="sustain-body">
+        <p class="body-copy r d2">
+          <span data-en>FerroNor operates under internal procedures that exceed local and international requirements.</span>
+          <span data-pt>A FerroNor opera sob procedimentos internos que superam os requisitos locais e internacionais.</span>
+        </p>
+        <p class="body-copy r d3">
+          <span data-en>Forest regeneration and long-term stewardship are fundamental principles.</span>
+          <span data-pt>A regeneração florestal e a gestão a longo prazo são princípios fundamentais.</span>
+        </p>
+        <p class="body-copy r d4">
+          <span data-en>The company expects the same standards from all subcontractors.</span>
+          <span data-pt>A empresa exige os mesmos padrões de todos os seus subcontratados.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     § 09 CONTACT
+══════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="wrap">
+    <p class="eyebrow r"><span data-en>07 — Contact</span><span data-pt>07 — Contacto</span></p>
+    <h2 class="headline r d1" style="margin-top:1.75rem;max-width:660px">
+      <span data-en>Begin the conversation.</span>
+      <span data-pt>Inicie a conversa.</span>
+    </h2>
+    <p class="contact-sub r d2">
+      <span data-en>We work with importers, architects, and project managers across Europe, Asia, and beyond. Reach out for pricing, samples, or volume inquiries.</span>
+      <span data-pt>Trabalhamos com importadores, arquitetos e gestores de projetos em toda a Europa, Ásia e além. Contacte-nos para preços, amostras ou encomendas em volume.</span>
+    </p>
+    <div class="contact-grid">
+      <form class="contact-form r d1" onsubmit="return false">
+        <div class="fg">
+          <label><span data-en>Full Name</span><span data-pt>Nome Completo</span></label>
+          <input type="text" autocomplete="name">
+        </div>
+        <div class="fg">
+          <label><span data-en>Company</span><span data-pt>Empresa</span></label>
+          <input type="text" autocomplete="organization">
+        </div>
+        <div class="fg">
+          <label>Email</label>
+          <input type="email" autocomplete="email">
+        </div>
+        <div class="fg">
+          <label><span data-en>Message</span><span data-pt>Mensagem</span></label>
+          <textarea placeholder="Tell us about your project or inquiry…"></textarea>
+        </div>
+        <button type="submit" class="form-btn">
+          <span data-en>Send Message</span><span data-pt>Enviar Mensagem</span> →
+        </button>
+      </form>
+      <div class="contact-info r d2">
+        <div class="ci">
+          <div class="ci-lbl">Email</div>
+          <div class="ci-val"><a href="mailto:info@ferronor.eu">info@ferronor.eu</a></div>
+        </div>
+        <div class="ci">
+          <div class="ci-lbl">Web</div>
+          <div class="ci-val"><a href="https://www.ferronor.eu" target="_blank" rel="noopener">www.ferronor.eu</a></div>
+        </div>
+        <div class="ci">
+          <div class="ci-lbl"><span data-en>Headquarters</span><span data-pt>Sede</span></div>
+          <div class="ci-val">Luanda, Angola</div>
+        </div>
+        <div class="ci">
+          <div class="ci-lbl"><span data-en>Export Markets</span><span data-pt>Mercados de Exportação</span></div>
+          <div class="ci-val">Europe · Asia · Africa</div>
+        </div>
+        <div class="contact-note">
+          <span data-en>FerroNor, LDA — Registered in Angola<br>Export documentation available upon request</span>
+          <span data-pt>FerroNor, LDA — Registada em Angola<br>Documentação de exportação disponível mediante pedido</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════ -->
+<footer>
+  <div>
+    <div class="ft-logo">FerroNor</div>
+    <div class="ft-tag">
+      <span data-en>Wood Industry in Angola<br>From Forest to Port</span>
+      <span data-pt>Indústria Madeireira em Angola<br>Da Floresta ao Porto</span>
+    </div>
+  </div>
+  <div class="ft-copy">
+    © 2025 FerroNor, LDA. <span data-en>All rights reserved.</span><span data-pt>Todos os direitos reservados.</span>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════ -->
+<script>
+(function () {
+  const NO_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── LANGUAGE ─────────────────────────────── */
+  function setLang(lang) {
+    document.documentElement.classList.toggle('pt', lang === 'pt');
+    document.getElementById('btn-en').classList.toggle('on', lang === 'en');
+    document.getElementById('btn-pt').classList.toggle('on', lang === 'pt');
+    document.documentElement.lang = lang;
+    localStorage.setItem('fn-lang', lang);
+  }
+  window.setLang = setLang;
+  const saved = localStorage.getItem('fn-lang');
+  if (saved) setLang(saved);
+
+  /* ── NAV SCROLL ───────────────────────────── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── MOBILE MENU ──────────────────────────── */
+  let mobOpen = false;
+  function toggleMob() { mobOpen ? closeMob() : openMob(); }
+  function openMob() {
+    mobOpen = true;
+    document.getElementById('mob-menu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const s = document.querySelectorAll('.nav-ham span');
+    s[0].style.transform = 'rotate(45deg) translate(4px,4px)';
+    s[1].style.opacity = '0';
+    s[2].style.transform = 'rotate(-45deg) translate(4px,-4px)';
+  }
+  function closeMob() {
+    mobOpen = false;
+    document.getElementById('mob-menu').classList.remove('open');
+    document.body.style.overflow = '';
+    const s = document.querySelectorAll('.nav-ham span');
+    s[0].style.transform = ''; s[1].style.opacity = ''; s[2].style.transform = '';
+  }
+  window.toggleMob = toggleMob;
+  window.closeMob = closeMob;
+
+  /* ── SCROLL REVEAL ────────────────────────── */
+  if (!NO_MOTION) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.r').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.r').forEach(el => el.classList.add('in'));
+  }
+
+
+  /* ── PARALLAX ─────────────────────────────── */
+  if (!NO_MOTION) {
+    const pxEls = [
+      { el: document.getElementById('pin-bg'),    speed: 0.28 },
+      { el: document.getElementById('sustain-bg'), speed: 0.28 },
+    ].filter(x => x.el);
+    let raf = false;
+    function doParallax() {
+      pxEls.forEach(({ el, speed }) => {
+        const r = el.parentElement.getBoundingClientRect();
+        el.style.transform = `translateY(${r.top * speed}px)`;
+      });
+      raf = false;
+    }
+    window.addEventListener('scroll', () => { if (!raf) { raf = true; requestAnimationFrame(doParallax); } }, { passive: true });
+  }
+
+  /* ── TIMELINE ─────────────────────────────── */
+  const tlFill  = document.getElementById('tl-fill');
+  const tlSteps = document.querySelectorAll('.tl-step');
+  const tlIO = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    if (NO_MOTION) {
+      tlSteps.forEach(s => s.classList.add('on'));
+      tlFill.style.width = '100%';
+    } else {
+      let i = 0;
+      const total = tlSteps.length - 1;
+      function tick() {
+        if (i > total) return;
+        tlSteps[i].classList.add('on');
+        tlFill.style.width = (i / total * 100) + '%';
+        i++;
+        if (i <= total) setTimeout(tick, 280);
+      }
+      setTimeout(tick, 400);
+    }
+    tlIO.disconnect();
+  }, { threshold: 0.5 });
+  const tlTrack = document.getElementById('tl-track');
+  if (tlTrack) tlIO.observe(tlTrack);
+
+  /* ── MAP ZOOM ─────────────────────────────── */
+  if (!NO_MOTION) {
+    const mapSvg = document.getElementById('map-svg');
+    const mapIO = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        setTimeout(() => mapSvg.classList.add('zoom'), 500);
+        mapIO.disconnect();
+      }
+    }, { threshold: 0.3 });
+    if (mapSvg) mapIO.observe(mapSvg);
+  }
+
+  /* ── STAT COUNT-UP ──────────────────────────── */
+  (function () {
+    const stats = document.querySelectorAll('.stat-num[data-count]');
+    if (!stats.length) return;
+    function countUp(el) {
+      const target   = parseInt(el.dataset.count);
+      const from     = parseInt(el.dataset.from || '0');
+      const suffix   = el.dataset.suffix || '';
+      const duration = 1400;
+      const t0       = performance.now();
+      function tick(now) {
+        const p     = Math.min((now - t0) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(from + (target - from) * eased) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+    stats.forEach(el => io.observe(el));
+  })();
+
+
+  /* ── COMPOUND HORIZONTAL SCROLL ──────────── */
+  const outer  = document.getElementById('compound-outer');
+  const track  = document.getElementById('compound-track');
+  const cFill  = document.getElementById('c-fill');
+
+  if (outer && track) {
+    function updateCompound() {
+      const rect   = outer.getBoundingClientRect();
+      const total  = outer.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct    = Math.min(1, scrolled / total);
+      const maxX   = track.scrollWidth - window.innerWidth;
+      if (!NO_MOTION) {
+        track.style.transform = `translateX(${-pct * maxX}px)`;
+      }
+      cFill.style.width = (pct * 100) + '%';
+    }
+    window.addEventListener('scroll', updateCompound, { passive: true });
+    updateCompound();
+  }
+
+  /* ── PROJECT FILTER ───────────────────────── */
+  window.filterCat = function(btn, cat) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.proj-item').forEach(item => {
+      const show = cat === 'all' || item.dataset.cat === cat;
+      item.style.display = show ? '' : 'none';
+    });
+  };
+
+})();
+</script>
+<script src="globe.js" defer></script>
+</body>
+</html>
